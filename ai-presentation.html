@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИИ в работе отдела</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --dark: #080a0e;
+    --surface: #0f1318;
+    --surface2: #161b22;
+    --surface3: #1c2230;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --accent: #e8c97a;
+    --accent-dim: rgba(232,201,122,0.12);
+    --accent2: #4a9eff;
+    --accent2-dim: rgba(74,158,255,0.1);
+    --green: #4fc08d;
+    --green-dim: rgba(79,192,141,0.1);
+    --red: #e05c5c;
+    --red-dim: rgba(224,92,92,0.1);
+    --text: #ddd9d0;
+    --muted: #6b6860;
+    --muted2: #4a4845;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ═══════════════════════════════════
+     PRESENTATION SHELL
+  ═══════════════════════════════════ */
+  .pres {
+    width: 100vw; height: 100vh;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  /* Subtle grid background */
+  .pres::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ═══════════════════════════════════
+     TOP BAR
+  ═══════════════════════════════════ */
+  .topbar {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,10,14,0.9);
+    backdrop-filter: blur(8px);
+    flex-shrink: 0;
+  }
+
+  .logo {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .nav-center {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .dot {
+    width: 28px; height: 4px; border-radius: 2px;
+    background: var(--muted2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none; padding: 0;
+  }
+  .dot.active { background: var(--accent); width: 36px; }
+  .dot.visited { background: rgba(255,255,255,0.2); }
+  .dot:hover:not(.active) { background: rgba(255,255,255,0.3); }
+
+  .nav-right {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .slide-counter {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.05em; font-variant-numeric: tabular-nums;
+    min-width: 40px; text-align: right;
+  }
+  .nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    background: none;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.2; cursor: default; }
+
+  /* ═══════════════════════════════════
+     SLIDES CONTAINER
+  ═══════════════════════════════════ */
+  .slides {
+    flex: 1; position: relative; overflow: hidden;
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    padding: 56px 72px 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .slide.active {
+    opacity: 1; transform: translateY(0);
+    pointer-events: all;
+  }
+  .slide.exit {
+    opacity: 0; transform: translateY(-16px);
+  }
+
+  /* ═══════════════════════════════════
+     PROGRESS BAR (bottom)
+  ═══════════════════════════════════ */
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 100;
+  }
+
+  /* ═══════════════════════════════════
+     KEYBOARD HINT
+  ═══════════════════════════════════ */
+  .key-hint {
+    position: fixed; bottom: 20px; right: 24px;
+    font-size: 10px; color: var(--muted2);
+    letter-spacing: 0.08em;
+    z-index: 50;
+  }
+
+  /* ═══════════════════════════════════
+     COMMON SLIDE ELEMENTS
+  ═══════════════════════════════════ */
+  .slide-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .slide-num {
+    font-size: 11px; color: var(--accent);
+    letter-spacing: 0.15em; font-weight: 500;
+  }
+  .slide-cat {
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .slide-h {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .slide-desc {
+    font-size: 15px; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .tools-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .tool-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.04em;
+    border: 1px solid;
+  }
+  .tb-claude { background: rgba(232,201,122,0.07); border-color: rgba(232,201,122,0.3); color: var(--accent); }
+  .tb-gpt    { background: rgba(79,192,141,0.07);  border-color: rgba(79,192,141,0.3);  color: var(--green); }
+  .tb-perp   { background: rgba(74,158,255,0.07);  border-color: rgba(74,158,255,0.3);  color: var(--accent2); }
+
+  /* ═══════════════════════════════════
+     CONTENT GRID
+  ═══════════════════════════════════ */
+  .grid { display: grid; gap: 14px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g23 { grid-template-columns: 1fr 1fr; }
+
+  .box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .box:hover { border-color: var(--border2); }
+
+  .box.b-gold   { border-left: 2px solid var(--accent); }
+  .box.b-blue   { border-left: 2px solid var(--accent2); }
+  .box.b-green  { border-left: 2px solid var(--green); }
+  .box.b-red    { border-left: 2px solid var(--red); }
+
+  .box-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+  .box-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+  .box-body  { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+  /* ═══════════════════════════════════
+     METRICS
+  ═══════════════════════════════════ */
+  .metrics { display: grid; gap: 12px; }
+  .m3 { grid-template-columns: repeat(3,1fr); }
+  .m4 { grid-template-columns: repeat(4,1fr); }
+
+  .metric {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .metric-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px; line-height: 1;
+    color: var(--accent);
+  }
+  .metric-label {
+    font-size: 11px; color: var(--muted);
+    margin-top: 5px; line-height: 1.4;
+  }
+  .metric-hint {
+    font-size: 10px; color: var(--muted2);
+    display: block; margin-top: 3px;
+  }
+
+  /* ═══════════════════════════════════
+     FLOW STEPS
+  ═══════════════════════════════════ */
+  .flow {
+    display: flex; align-items: stretch;
+    gap: 0; margin-bottom: 24px;
+  }
+  .flow-step { flex: 1; position: relative; }
+  .flow-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 18px; z-index: 2;
+  }
+  .flow-inner {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .flow-num {
+    font-size: 10px; color: var(--accent);
+    letter-spacing: 0.1em; font-weight: 500;
+  }
+  .flow-txt { font-size: 12px; color: var(--text); line-height: 1.45; }
+
+  /* ═══════════════════════════════════
+     TIMELINE
+  ═══════════════════════════════════ */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: flex; gap: 18px;
+    padding-bottom: 18px;
+    position: relative;
+  }
+  .tl-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 13px; top: 28px; bottom: 0;
+    width: 1px; background: var(--border2);
+  }
+  .tl-dot {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px; color: var(--accent); font-weight: 500;
+    margin-top: 2px;
+  }
+  .tl-content { flex: 1; }
+  .tl-title { font-size: 14px; color: #fff; font-weight: 500; margin-bottom: 4px; }
+  .tl-body  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ═══════════════════════════════════
+     RESULT BOX
+  ═══════════════════════════════════ */
+  .result-box {
+    background: var(--surface2);
+    border: 1px solid rgba(232,201,122,0.2);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .result-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,201,122,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .result-text {
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+  }
+  .result-text strong { color: var(--text); font-weight: 500; }
+
+  /* ═══════════════════════════════════
+     PROGRESS BARS
+  ═══════════════════════════════════ */
+  .prog-list { display: flex; flex-direction: column; gap: 12px; }
+  .prog-item { display: flex; align-items: center; gap: 14px; }
+  .prog-label { font-size: 12px; color: var(--muted); width: 220px; flex-shrink: 0; }
+  .prog-track { flex: 1; height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .prog-fill  { height: 100%; border-radius: 2px; background: var(--accent); }
+  .prog-val   { font-size: 12px; color: var(--text); font-weight: 500; width: 56px; text-align: right; }
+
+  /* ═══════════════════════════════════
+     SLIDE 0 — TITLE
+  ═══════════════════════════════════ */
+  #s0 {
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  #s0 .glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,201,122,0.05) 0%, transparent 65%);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+  .title-eyebrow {
+    font-size: 11px; letter-spacing: 0.22em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 24px; font-weight: 400;
+  }
+  .title-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 9vw, 120px);
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+  .title-sub {
+    font-size: 16px; color: var(--muted);
+    font-weight: 300; line-height: 1.65;
+    max-width: 520px; margin: 24px auto 48px;
+  }
+  .title-divider {
+    width: 48px; height: 1px;
+    background: var(--accent);
+    margin: 0 auto 40px;
+  }
+  .title-tags {
+    display: flex; gap: 10px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .title-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border2);
+    padding: 8px 18px; border-radius: 24px;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ═══════════════════════════════════
+     TWO-COL LAYOUT (slide with sidebar)
+  ═══════════════════════════════════ */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 28px;
+    flex: 1;
+    overflow: hidden;
+  }
+  .col-main { display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+  .col-side  { display: flex; flex-direction: column; gap: 14px; }
+
+  /* ═══════════════════════════════════
+     DECORATIVE CORNER NUMBERS
+  ═══════════════════════════════════ */
+  .corner-num {
+    position: absolute;
+    right: 72px; bottom: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px; line-height: 1;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.02em;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="pres">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      ИИ в работе отдела · 2025
+    </div>
+    <div class="nav-center" id="dots"></div>
+    <div class="nav-right">
+      <span class="slide-counter" id="counter">1 / 7</span>
+      <div class="nav-btns">
+        <button class="nav-btn" id="prevBtn" onclick="go(-1)" title="Назад (←)">←</button>
+        <button class="nav-btn" id="nextBtn" onclick="go(1)" title="Далее (→)">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="slides">
+
+    <!-- ══ SLIDE 0: TITLE ══════════════════════════ -->
+    <div class="slide active" id="s0">
+      <div class="glow"></div>
+      <div class="title-eyebrow">Внутренняя презентация · 2025</div>
+      <div class="title-main">ИИ в работе<br>отдела</div>
+      <div class="title-sub">Как мы используем искусственный интеллект:<br>от тендерного анализа до собственного сервиса отчётности</div>
+      <div class="title-divider"></div>
+      <div class="title-tags">
+        <span class="title-tag">◆ Claude</span>
+        <span class="title-tag">◆ ChatGPT</span>
+        <span class="title-tag">◆ Perplexity</span>
+        <span class="title-tag">6 направлений</span>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 1: ТЕНДЕРЫ ══════════════════════════ -->
+    <div class="slide" id="s1">
+      <div class="corner-num">01</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">01 / 06</span>
+        <span class="slide-cat">· Автоматизация</span>
+      </div>
+      <div class="slide-h">Работа с тендерами</div>
+      <div class="slide-desc">Загружаем тендерную документацию — ИИ выявляет слабые места, опасные условия и формирует конкретный список задач для руководителя отдела.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g3" style="flex:1">
+            <div class="box b-gold">
+              <span class="box-icon">🔍</span>
+              <div class="box-title">Анализ документации</div>
+              <div class="box-body">Загрузка тендерного пакета → автоматическое чтение условий, требований, сроков и обязательств</div>
+            </div>
+            <div class="box b-red">
+              <span class="box-icon">⚠️</span>
+              <div class="box-title">Опасные точки</div>
+              <div class="box-body">Подсветка слабых мест: скрытые условия, противоречия, нестандартные требования к участнику</div>
+            </div>
+            <div class="box b-green">
+              <span class="box-icon">✅</span>
+              <div class="box-title">Список задач</div>
+              <div class="box-body">Конкретный чеклист: что посчитать, какую информацию подготовить, какие документы запросить</div>
+            </div>
+          </div>
+          <div class="result-box">
+            <div class="result-icon">💡</div>
+            <div class="result-text"><strong>Результат:</strong> руководитель получает готовый анализ без многочасового ручного изучения документов. Снижается риск пропустить критичное условие.</div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">быстрее первичный анализ<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]%</div>
+              <div class="metric-label">снижение риска пропустить условие<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ] ч</div>
+              <div class="metric-label">экономия на каждый тендер<span class="metric-hint">← вставь значение</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 2: БЛОГ / ИЗОБРАЖЕНИЯ ══════════════════════════ -->
+    <div class="slide" id="s2">
+      <div class="corner-num">02</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">02 / 06</span>
+        <span class="slide-cat">· Контент-производство</span>
+      </div>
+      <div class="slide-h">Генерация изображений для блога</div>
+      <div class="slide-desc">Для клиента ЦУМ создаём большой поток статей. Каждая публикация получает уникальное изображение — без привлечения дизайнера.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-gpt">◆ ChatGPT / DALL·E</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g2" style="flex:1">
+            <div class="box b-red">
+              <span class="box-icon">🔴</span>
+              <div class="box-title">Проблема</div>
+              <div class="box-body">Высокий темп публикаций требует постоянного потока уникального визуала. Вручную это занимало часы дизайнерского времени на каждую статью</div>
+            </div>
+            <div class="box b-green">
+              <span class="box-icon">✅</span>
+              <div class="box-title">Решение</div>
+              <div class="box-body">Генерация через ChatGPT/DALL·E: стиль, атмосфера и тема подбираются по тексту статьи автоматически без участия дизайнера</div>
+            </div>
+            <div class="box b-gold" style="grid-column:1/-1">
+              <span class="box-icon">🖼</span>
+              <div class="box-title">Процесс</div>
+              <div class="box-body">Копируем ключевые тезисы статьи → формируем промпт → получаем 3–4 варианта → выбираем и публикуем. Весь цикл — до 5 минут на изображение</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ]</div>
+              <div class="metric-label">статей/мес с AI-визуалом<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">экономия vs дизайнер<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">~5</div>
+              <div class="metric-label">минут на одно изображение</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 3: ЧАТ-БОТ ══════════════════════════ -->
+    <div class="slide" id="s3">
+      <div class="corner-num">03</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">03 / 06</span>
+        <span class="slide-cat">· Продуктовая разработка</span>
+      </div>
+      <div class="slide-h">Чат-бот для вебинаров</div>
+      <div class="slide-desc">Telegram-бот для выдачи материалов участникам вебинаров. Разработан за 1 час. Параллельно собирает базу заинтересованных людей.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-perp">◆ Perplexity</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+        <div class="flow" style="gap:28px">
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">01</span><div class="flow-txt">Участник сканирует QR в презентации</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">02</span><div class="flow-txt">Попадает в Telegram-бота</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">03</span><div class="flow-txt">Получает PDF-материал</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">04</span><div class="flow-txt">Контакт фиксируется в базе</div></div>
+          </div>
+        </div>
+        <div class="grid g3">
+          <div class="box b-red">
+            <div class="box-title">❌ Было (план)</div>
+            <div class="box-body">Google / Яндекс диск — материалы доступны, но нет понимания кто именно скачал. Потеря потенциальных лидов</div>
+          </div>
+          <div class="box b-green">
+            <div class="box-title">✅ Стало</div>
+            <div class="box-body">Бот выдаёт материал и собирает контакты одновременно. База заинтересованных людей формируется автоматически</div>
+          </div>
+          <div class="box b-blue">
+            <div class="box-title">🔮 Следующий шаг</div>
+            <div class="box-body">Объединение с каналом событий — все ивенты, материалы и участники в одном месте</div>
+          </div>
+        </div>
+        <div class="metrics m3" style="margin-top:auto">
+          <div class="metric"><div class="metric-val">1 ч</div><div class="metric-label">время разработки бота</div></div>
+          <div class="metric"><div class="metric-val">[ ]</div><div class="metric-label">контактов собрано<span class="metric-hint">← вставь значение</span></div></div>
+          <div class="metric"><div class="metric-val">0 ₽</div><div class="metric-label">стоимость разработки</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 4: АУДИТЫ ══════════════════════════ -->
+    <div class="slide" id="s4">
+      <div class="corner-num">04</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">04 / 06</span>
+        <span class="slide-cat">· Автоматизация процессов</span>
+      </div>
+      <div class="slide-h">Предпродажные аудиты</div>
+      <div class="slide-desc">Раньше: несколько часов ручной работы специалиста. Теперь: BAT-файл запускает парсинг, Claude обращается к API-сервисам и готовит готовый HTML-отчёт.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude Cowork</span>
+        <span class="tool-badge tb-gpt">◆ ChatGPT</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="box b-red" style="margin-bottom:4px">
+            <div class="box-title">🔴 Проблема: ручной процесс на несколько часов</div>
+            <div class="box-body">Парсинг через Screaming Frog → ручной анализ отчётов → изучение конкурентов → написание аудита в документ. Каждый аудит — часы работы специалиста</div>
+          </div>
+          <div class="timeline" style="flex:1">
+            <div class="tl-item">
+              <div class="tl-dot">1</div>
+              <div class="tl-content">
+                <div class="tl-title">Запуск BAT-файла</div>
+                <div class="tl-body">Screaming Frog запускается через командную строку — автопарсинг без ручных действий</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2</div>
+              <div class="tl-content">
+                <div class="tl-title">Отчёты → папка проекта</div>
+                <div class="tl-body">Результаты парсинга автоматически попадают в папку проекта Claude Cowork</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">3</div>
+              <div class="tl-content">
+                <div class="tl-title">Сбор данных через ~5 API</div>
+                <div class="tl-body">Claude обращается к внешним сервисам, собирает актуальные данные по сайту клиента</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">4</div>
+              <div class="tl-content">
+                <div class="tl-title">Готовый HTML-отчёт</div>
+                <div class="tl-body">Профессиональный отчёт по фирменному шаблону — вместо ручного заполнения документа</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ] ч</div>
+              <div class="metric-label">экономия на один аудит<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">~5</div>
+              <div class="metric-label">API-сервисов подключено</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">рост скорости подготовки<span class="metric-hint">← вставь значение</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 5: КОНТЕНТ ══════════════════════════ -->
+    <div class="slide" id="s5">
+      <div class="corner-num">05</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">05 / 06</span>
+        <span class="slide-cat">· Контент</span>
+      </div>
+      <div class="slide-h">Сценарии, контент-планы, посты</div>
+      <div class="slide-desc">ИИ помогает на всех этапах создания контента — от стратегии и планирования до готового текста для публикации в любом формате.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+        <span class="tool-badge tb-gpt">◆ ChatGPT</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+        <div class="grid g3">
+          <div class="box b-gold">
+            <span class="box-icon">🎬</span>
+            <div class="box-title">Сценарии для видео</div>
+            <div class="box-body">Структура, сценарный план, раскадровка — ИИ предлагает варианты под формат и целевую аудиторию канала</div>
+          </div>
+          <div class="box b-blue">
+            <span class="box-icon">📅</span>
+            <div class="box-title">Контент-планы</div>
+            <div class="box-body">Ежемесячные планы по каналам: темы, форматы, даты публикаций — в несколько раз быстрее ручной разработки</div>
+          </div>
+          <div class="box b-green">
+            <span class="box-icon">✍️</span>
+            <div class="box-title">Посты и тексты</div>
+            <div class="box-body">Готовые тексты для соцсетей, рассылок, презентаций — с адаптацией под каждую платформу и тон бренда</div>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="prog-list" style="margin-bottom:20px">
+              <div class="prog-item">
+                <span class="prog-label">Экономия времени на контент-план</span>
+                <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+                <span class="prog-val">[ ]%</span>
+              </div>
+              <div class="prog-item">
+                <span class="prog-label">Скорость подготовки сценария</span>
+                <div class="prog-track"><div class="prog-fill" style="width:60%"></div></div>
+                <span class="prog-val">[ ]x</span>
+              </div>
+              <div class="prog-item">
+                <span class="prog-label">Постов в месяц с AI-помощью</span>
+                <div class="prog-track"><div class="prog-fill" style="width:80%"></div></div>
+                <span class="prog-val">[ ]</span>
+              </div>
+            </div>
+            <div style="font-size:10px;color:var(--muted2)">← замени [ ] на реальные значения</div>
+          </div>
+          <div class="result-box" style="max-width:320px;align-self:stretch">
+            <div class="result-icon">💡</div>
+            <div class="result-text"><strong>Ключевое:</strong> команда фокусируется на стратегии и редактуре, а не на написании черновиков. Скорость и объём контента кратно выросли.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 6: ОТЧЁТНОСТЬ ══════════════════════════ -->
+    <div class="slide" id="s6">
+      <div class="corner-num">06</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">06 / 06</span>
+        <span class="slide-cat">· Продукт · Флагман</span>
+      </div>
+      <div class="slide-h">Сервис SEO-отчётности</div>
+      <div class="slide-desc">Собственный сервис отчётов: собирает данные Яндекс Метрики, Вебмастера, Google Search Console, PageSpeed и Topvisor — и генерирует красивый отчёт с ИИ-выводами.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+        <span class="tool-badge tb-claude">◆ Claude Code</span>
+        <span class="tool-badge tb-gpt">◆ GPT API</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g2">
+            <div class="box b-gold">
+              <span class="box-icon">📊</span>
+              <div class="box-title">Что делает сервис</div>
+              <div class="box-body">Автоматически собирает данные из 5 источников через API, объединяет в единый брендированный отчёт, генерирует текстовые выводы через GPT на основе реальных цифр клиента</div>
+            </div>
+            <div class="box b-blue">
+              <span class="box-icon">🛠</span>
+              <div class="box-title">Стек</div>
+              <div class="box-body">Yandex Metrica API · Яндекс Вебмастер · Google Search Console · PageSpeed Insights · Topvisor API · GPT для аналитики · Фирменный UI-кит</div>
+            </div>
+          </div>
+          <div class="timeline" style="flex:1">
+            <div class="tl-item">
+              <div class="tl-dot">→</div>
+              <div class="tl-content">
+                <div class="tl-title">Идея 6 лет назад — Power BI</div>
+                <div class="tl-body">Создавал коннекторы вручную, дальше экспериментов не уходило</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">→</div>
+              <div class="tl-content">
+                <div class="tl-title">С Claude — первый лендинг, потом бэкенд</div>
+                <div class="tl-body">Вернулся к разработке спустя 7 лет после универа. Лендинг → GitHub Pages → собственный хостинг</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">✓</div>
+              <div class="tl-content">
+                <div class="tl-title">3 недели — рабочий MVP сервиса отчётов</div>
+                <div class="tl-body">Дизайн через Claude + UI-киты → API-интеграции → GPT-выводы → сейчас на локалхосте, готов к демо</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px">
+            <div class="metric">
+              <div class="metric-val" style="font-size:30px;color:var(--red)">1 700₽</div>
+              <div class="metric-label">тратили на внешний сервис / мес</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">3 нед</div>
+              <div class="metric-label">от идеи до рабочего MVP</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">5</div>
+              <div class="metric-label">API-источников в одном отчёте</div>
+            </div>
+          </div>
+          <div class="result-box" style="border-color:rgba(79,192,141,0.25);flex:1;align-items:flex-start">
+            <div class="result-icon" style="background:var(--green-dim);border-color:rgba(79,192,141,0.25)">🚀</div>
+            <div class="result-text"><strong>Следующий шаг:</strong> перевод на хостинг и подключение всей клиентской базы. Полный контроль над данными и дизайном отчётов.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides -->
+
+  <!-- BOTTOM PROGRESS -->
+  <div class="progress-bar" id="progressBar" style="width:14.28%"></div>
+
+  <!-- KEY HINT -->
+  <div class="key-hint">← → для навигации</div>
+
+</div><!-- /pres -->
+
+<script>
+  const TOTAL = 7;
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const bar = document.getElementById('progressBar');
+  const labels = ['Титул','Тендеры','Блог ЦУМ','Чат-бот','Аудиты','Контент','Отчётность'];
+  const visited = new Set([0]);
+
+  // Build dots
+  for(let i=0;i<TOTAL;i++){
+    const d = document.createElement('button');
+    d.className = 'dot' + (i===0?' active visited':'');
+    d.title = labels[i];
+    d.addEventListener('click', (()=>{const idx=i;return()=>goTo(idx)})());
+    dotsEl.appendChild(d);
+  }
+
+  function updateUI(){
+    counter.textContent = (cur+1)+' / '+TOTAL;
+    prevBtn.disabled = cur===0;
+    nextBtn.disabled = cur===TOTAL-1;
+    bar.style.width = ((cur+1)/TOTAL*100)+'%';
+    const dots = dotsEl.querySelectorAll('.dot');
+    dots.forEach((d,i)=>{
+      d.className = 'dot'+(i===cur?' active':'')+(visited.has(i)?' visited':'');
+    });
+  }
+
+  function goTo(n){
+    if(n===cur) return;
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(TOTAL-1, n));
+    visited.add(cur);
+    slides[cur].classList.add('active');
+    updateUI();
+  }
+
+  function go(dir){ goTo(cur+dir); }
+
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')  go(-1);
+  });
+
+  updateUI();
+</script>
+</body>
+</html>
