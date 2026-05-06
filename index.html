@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ИИ в работе отдела</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="pres">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      ИИ в работе отдела · 2025
+    </div>
+    <div class="nav-center" id="dots"></div>
+    <div class="nav-right">
+      <span class="slide-counter" id="counter">1 / 7</span>
+      <div class="nav-btns">
+        <button class="nav-btn" id="prevBtn" onclick="go(-1)" title="Назад (←)">←</button>
+        <button class="nav-btn" id="nextBtn" onclick="go(1)" title="Далее (→)">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="slides">
+
+    <!-- ══ SLIDE 0: TITLE ══════════════════════════ -->
+    <div class="slide active" id="s0">
+      <div class="glow"></div>
+      <div class="title-eyebrow">Внутренняя презентация · 2025</div>
+      <div class="title-main">ИИ в работе<br>отдела</div>
+      <div class="title-sub">Как мы используем искусственный интеллект:<br>от тендерного анализа до собственного сервиса отчётности</div>
+      <div class="title-divider"></div>
+      <div class="title-tags">
+        <span class="title-tag">◆ Claude</span>
+        <span class="title-tag">◆ ChatGPT</span>
+        <span class="title-tag">◆ Perplexity</span>
+        <span class="title-tag">6 направлений</span>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 1: ТЕНДЕРЫ ══════════════════════════ -->
+    <div class="slide" id="s1">
+      <div class="corner-num">01</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">01 / 06</span>
+        <span class="slide-cat">· Автоматизация</span>
+      </div>
+      <div class="slide-h">Работа с тендерами</div>
+      <div class="slide-desc">Загружаем тендерную документацию — ИИ выявляет слабые места, опасные условия и формирует конкретный список задач для руководителя отдела.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g3" style="flex:1">
+            <div class="box b-gold">
+              <span class="box-icon">🔍</span>
+              <div class="box-title">Анализ документации</div>
+              <div class="box-body">Загрузка тендерного пакета → автоматическое чтение условий, требований, сроков и обязательств</div>
+            </div>
+            <div class="box b-red">
+              <span class="box-icon">⚠️</span>
+              <div class="box-title">Опасные точки</div>
+              <div class="box-body">Подсветка слабых мест: скрытые условия, противоречия, нестандартные требования к участнику</div>
+            </div>
+            <div class="box b-green">
+              <span class="box-icon">✅</span>
+              <div class="box-title">Список задач</div>
+              <div class="box-body">Конкретный чеклист: что посчитать, какую информацию подготовить, какие документы запросить</div>
+            </div>
+          </div>
+          <div class="result-box">
+            <div class="result-icon">💡</div>
+            <div class="result-text"><strong>Результат:</strong> руководитель получает готовый анализ без многочасового ручного изучения документов. Снижается риск пропустить критичное условие.</div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">быстрее первичный анализ<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]%</div>
+              <div class="metric-label">снижение риска пропустить условие<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ] ч</div>
+              <div class="metric-label">экономия на каждый тендер<span class="metric-hint">← вставь значение</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 2: БЛОГ / ИЗОБРАЖЕНИЯ ══════════════════════════ -->
+    <div class="slide" id="s2">
+      <div class="corner-num">02</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">02 / 06</span>
+        <span class="slide-cat">· Контент-производство</span>
+      </div>
+      <div class="slide-h">Генерация изображений для блога</div>
+      <div class="slide-desc">Для клиента ЦУМ создаём большой поток статей. Каждая публикация получает уникальное изображение — без привлечения дизайнера.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-gpt">◆ ChatGPT / DALL·E</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g2" style="flex:1">
+            <div class="box b-red">
+              <span class="box-icon">🔴</span>
+              <div class="box-title">Проблема</div>
+              <div class="box-body">Высокий темп публикаций требует постоянного потока уникального визуала. Вручную это занимало часы дизайнерского времени на каждую статью</div>
+            </div>
+            <div class="box b-green">
+              <span class="box-icon">✅</span>
+              <div class="box-title">Решение</div>
+              <div class="box-body">Генерация через ChatGPT/DALL·E: стиль, атмосфера и тема подбираются по тексту статьи автоматически без участия дизайнера</div>
+            </div>
+            <div class="box b-gold" style="grid-column:1/-1">
+              <span class="box-icon">🖼</span>
+              <div class="box-title">Процесс</div>
+              <div class="box-body">Копируем ключевые тезисы статьи → формируем промпт → получаем 3–4 варианта → выбираем и публикуем. Весь цикл — до 5 минут на изображение</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ]</div>
+              <div class="metric-label">статей/мес с AI-визуалом<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">экономия vs дизайнер<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">~5</div>
+              <div class="metric-label">минут на одно изображение</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 3: ЧАТ-БОТ ══════════════════════════ -->
+    <div class="slide" id="s3">
+      <div class="corner-num">03</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">03 / 06</span>
+        <span class="slide-cat">· Продуктовая разработка</span>
+      </div>
+      <div class="slide-h">Чат-бот для вебинаров</div>
+      <div class="slide-desc">Telegram-бот для выдачи материалов участникам вебинаров. Разработан за 1 час. Параллельно собирает базу заинтересованных людей.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-perp">◆ Perplexity</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+        <div class="flow" style="gap:28px">
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">01</span><div class="flow-txt">Участник сканирует QR в презентации</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">02</span><div class="flow-txt">Попадает в Telegram-бота</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">03</span><div class="flow-txt">Получает PDF-материал</div></div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-inner"><span class="flow-num">04</span><div class="flow-txt">Контакт фиксируется в базе</div></div>
+          </div>
+        </div>
+        <div class="grid g3">
+          <div class="box b-red">
+            <div class="box-title">❌ Было (план)</div>
+            <div class="box-body">Google / Яндекс диск — материалы доступны, но нет понимания кто именно скачал. Потеря потенциальных лидов</div>
+          </div>
+          <div class="box b-green">
+            <div class="box-title">✅ Стало</div>
+            <div class="box-body">Бот выдаёт материал и собирает контакты одновременно. База заинтересованных людей формируется автоматически</div>
+          </div>
+          <div class="box b-blue">
+            <div class="box-title">🔮 Следующий шаг</div>
+            <div class="box-body">Объединение с каналом событий — все ивенты, материалы и участники в одном месте</div>
+          </div>
+        </div>
+        <div class="metrics m3" style="margin-top:auto">
+          <div class="metric"><div class="metric-val">1 ч</div><div class="metric-label">время разработки бота</div></div>
+          <div class="metric"><div class="metric-val">[ ]</div><div class="metric-label">контактов собрано<span class="metric-hint">← вставь значение</span></div></div>
+          <div class="metric"><div class="metric-val">0 ₽</div><div class="metric-label">стоимость разработки</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 4: АУДИТЫ ══════════════════════════ -->
+    <div class="slide" id="s4">
+      <div class="corner-num">04</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">04 / 06</span>
+        <span class="slide-cat">· Автоматизация процессов</span>
+      </div>
+      <div class="slide-h">Предпродажные аудиты</div>
+      <div class="slide-desc">Раньше: несколько часов ручной работы специалиста. Теперь: BAT-файл запускает парсинг, Claude обращается к API-сервисам и готовит готовый HTML-отчёт.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude Cowork</span>
+        <span class="tool-badge tb-gpt">◆ ChatGPT</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="box b-red" style="margin-bottom:4px">
+            <div class="box-title">🔴 Проблема: ручной процесс на несколько часов</div>
+            <div class="box-body">Парсинг через Screaming Frog → ручной анализ отчётов → изучение конкурентов → написание аудита в документ. Каждый аудит — часы работы специалиста</div>
+          </div>
+          <div class="timeline" style="flex:1">
+            <div class="tl-item">
+              <div class="tl-dot">1</div>
+              <div class="tl-content">
+                <div class="tl-title">Запуск BAT-файла</div>
+                <div class="tl-body">Screaming Frog запускается через командную строку — автопарсинг без ручных действий</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2</div>
+              <div class="tl-content">
+                <div class="tl-title">Отчёты → папка проекта</div>
+                <div class="tl-body">Результаты парсинга автоматически попадают в папку проекта Claude Cowork</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">3</div>
+              <div class="tl-content">
+                <div class="tl-title">Сбор данных через ~5 API</div>
+                <div class="tl-body">Claude обращается к внешним сервисам, собирает актуальные данные по сайту клиента</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">4</div>
+              <div class="tl-content">
+                <div class="tl-title">Готовый HTML-отчёт</div>
+                <div class="tl-body">Профессиональный отчёт по фирменному шаблону — вместо ручного заполнения документа</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
+            <div class="metric">
+              <div class="metric-val">[ ] ч</div>
+              <div class="metric-label">экономия на один аудит<span class="metric-hint">← вставь значение</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">~5</div>
+              <div class="metric-label">API-сервисов подключено</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">[ ]x</div>
+              <div class="metric-label">рост скорости подготовки<span class="metric-hint">← вставь значение</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 5: КОНТЕНТ ══════════════════════════ -->
+    <div class="slide" id="s5">
+      <div class="corner-num">05</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">05 / 06</span>
+        <span class="slide-cat">· Контент</span>
+      </div>
+      <div class="slide-h">Сценарии, контент-планы, посты</div>
+      <div class="slide-desc">ИИ помогает на всех этапах создания контента — от стратегии и планирования до готового текста для публикации в любом формате.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+        <span class="tool-badge tb-gpt">◆ ChatGPT</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+        <div class="grid g3">
+          <div class="box b-gold">
+            <span class="box-icon">🎬</span>
+            <div class="box-title">Сценарии для видео</div>
+            <div class="box-body">Структура, сценарный план, раскадровка — ИИ предлагает варианты под формат и целевую аудиторию канала</div>
+          </div>
+          <div class="box b-blue">
+            <span class="box-icon">📅</span>
+            <div class="box-title">Контент-планы</div>
+            <div class="box-body">Ежемесячные планы по каналам: темы, форматы, даты публикаций — в несколько раз быстрее ручной разработки</div>
+          </div>
+          <div class="box b-green">
+            <span class="box-icon">✍️</span>
+            <div class="box-title">Посты и тексты</div>
+            <div class="box-body">Готовые тексты для соцсетей, рассылок, презентаций — с адаптацией под каждую платформу и тон бренда</div>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;gap:14px;align-items:flex-start">
+          <div style="flex:1">
+            <div class="prog-list" style="margin-bottom:20px">
+              <div class="prog-item">
+                <span class="prog-label">Экономия времени на контент-план</span>
+                <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+                <span class="prog-val">[ ]%</span>
+              </div>
+              <div class="prog-item">
+                <span class="prog-label">Скорость подготовки сценария</span>
+                <div class="prog-track"><div class="prog-fill" style="width:60%"></div></div>
+                <span class="prog-val">[ ]x</span>
+              </div>
+              <div class="prog-item">
+                <span class="prog-label">Постов в месяц с AI-помощью</span>
+                <div class="prog-track"><div class="prog-fill" style="width:80%"></div></div>
+                <span class="prog-val">[ ]</span>
+              </div>
+            </div>
+            <div style="font-size:10px;color:var(--muted2)">← замени [ ] на реальные значения</div>
+          </div>
+          <div class="result-box" style="max-width:320px;align-self:stretch">
+            <div class="result-icon">💡</div>
+            <div class="result-text"><strong>Ключевое:</strong> команда фокусируется на стратегии и редактуре, а не на написании черновиков. Скорость и объём контента кратно выросли.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 6: ОТЧЁТНОСТЬ ══════════════════════════ -->
+    <div class="slide" id="s6">
+      <div class="corner-num">06</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">06 / 06</span>
+        <span class="slide-cat">· Продукт · Флагман</span>
+      </div>
+      <div class="slide-h">Сервис SEO-отчётности</div>
+      <div class="slide-desc">Собственный сервис отчётов: собирает данные Яндекс Метрики, Вебмастера, Google Search Console, PageSpeed и Topvisor — и генерирует красивый отчёт с ИИ-выводами.</div>
+      <div class="tools-row">
+        <span class="tool-badge tb-claude">◆ Claude</span>
+        <span class="tool-badge tb-claude">◆ Claude Code</span>
+        <span class="tool-badge tb-gpt">◆ GPT API</span>
+      </div>
+      <div class="two-col">
+        <div class="col-main">
+          <div class="grid g2">
+            <div class="box b-gold">
+              <span class="box-icon">📊</span>
+              <div class="box-title">Что делает сервис</div>
+              <div class="box-body">Автоматически собирает данные из 5 источников через API, объединяет в единый брендированный отчёт, генерирует текстовые выводы через GPT на основе реальных цифр клиента</div>
+            </div>
+            <div class="box b-blue">
+              <span class="box-icon">🛠</span>
+              <div class="box-title">Стек</div>
+              <div class="box-body">Yandex Metrica API · Яндекс Вебмастер · Google Search Console · PageSpeed Insights · Topvisor API · GPT для аналитики · Фирменный UI-кит</div>
+            </div>
+          </div>
+          <div class="timeline" style="flex:1">
+            <div class="tl-item">
+              <div class="tl-dot">→</div>
+              <div class="tl-content">
+                <div class="tl-title">Идея 6 лет назад — Power BI</div>
+                <div class="tl-body">Создавал коннекторы вручную, дальше экспериментов не уходило</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">→</div>
+              <div class="tl-content">
+                <div class="tl-title">С Claude — первый лендинг, потом бэкенд</div>
+                <div class="tl-body">Вернулся к разработке спустя 7 лет после универа. Лендинг → GitHub Pages → собственный хостинг</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">✓</div>
+              <div class="tl-content">
+                <div class="tl-title">3 недели — рабочий MVP сервиса отчётов</div>
+                <div class="tl-body">Дизайн через Claude + UI-киты → API-интеграции → GPT-выводы → сейчас на локалхосте, готов к демо</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px">
+            <div class="metric">
+              <div class="metric-val" style="font-size:30px;color:var(--red)">1 700₽</div>
+              <div class="metric-label">тратили на внешний сервис / мес</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">3 нед</div>
+              <div class="metric-label">от идеи до рабочего MVP</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">5</div>
+              <div class="metric-label">API-источников в одном отчёте</div>
+            </div>
+          </div>
+          <div class="result-box" style="border-color:rgba(79,192,141,0.25);flex:1;align-items:flex-start">
+            <div class="result-icon" style="background:var(--green-dim);border-color:rgba(79,192,141,0.25)">🚀</div>
+            <div class="result-text"><strong>Следующий шаг:</strong> перевод на хостинг и подключение всей клиентской базы. Полный контроль над данными и дизайном отчётов.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides -->
+
+  <!-- BOTTOM PROGRESS -->
+  <div class="progress-bar" id="progressBar" style="width:14.28%"></div>
+
+  <!-- KEY HINT -->
+  <div class="key-hint">← → для навигации</div>
+
+</div><!-- /pres -->
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
