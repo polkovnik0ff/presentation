@@ -337,6 +337,9 @@ html, body {
 .tl-title { font-size: 14px; color: #fff; font-weight: 600; margin-bottom: 4px; }
 .tl-body  { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
+#s7 .tl-title { font-size: 17px; margin-bottom: 6px; }
+#s7 .tl-body  { font-size: 15px; line-height: 1.65; }
+
 /* ═══════════════════════════════════
    RESULT BOX
 ═══════════════════════════════════ */
