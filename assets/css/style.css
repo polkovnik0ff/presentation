@@ -225,10 +225,12 @@ html, body {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px 22px;
+  padding: 24px 24px;
   position: relative;
   overflow: hidden;
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 .box:hover { border-color: var(--border2); }
 
@@ -237,10 +239,10 @@ html, body {
 .box.b-green  { border-left: 2px solid var(--green); }
 .box.b-red    { border-left: 2px solid var(--red); }
 
-.box-icon { margin-bottom: 14px; display: block; }
+.box-icon { margin-bottom: 16px; display: block; }
 .box-icon svg { display: block; }
-.box-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-.box-body  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.box-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+.box-body  { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; }
 
 /* ═══════════════════════════════════
    METRICS

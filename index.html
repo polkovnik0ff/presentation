@@ -61,17 +61,17 @@
       <div style="flex:1;display:flex;flex-direction:column;gap:14px">
         <div class="grid g3" style="flex:1">
           <div class="box b-gold">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
             <div class="box-title">Анализ документации</div>
             <div class="box-body">Загрузка тендерного пакета → автоматическое чтение условий, требований, сроков и обязательств</div>
           </div>
           <div class="box b-red">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
             <div class="box-title">Опасные точки</div>
             <div class="box-body">Подсветка слабых мест: скрытые условия, противоречия, нестандартные требования к участнику</div>
           </div>
           <div class="box b-green">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
             <div class="box-title">Список задач</div>
             <div class="box-body">Конкретный чеклист: что посчитать, какую информацию подготовить, какие документы запросить</div>
           </div>
@@ -101,7 +101,7 @@
             <div class="box b-red">
               <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
               <div class="box-title">Проблема</div>
-              <div class="box-body">Высокий темп публикаций требует постоянного потока уникального визуала. Вручную это занимало часы дизайнерского времени на каждую статью</div>
+              <div class="box-body">Высокий темп публикаций требует постоянного потока уникального визуала. Вручную генерировать или искать релевантные изображения занимало бы часы</div>
             </div>
             <div class="box b-green">
               <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
@@ -120,9 +120,11 @@
             <div class="metric"><div class="metric-val">2 мин</div><div class="metric-label">на одно изображение</div></div>
           </div>
         </div>
-        <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px;overflow:hidden">
-          <img src="assets/img/1.png" alt="Пример генерации 1" style="width:100%;height:100%;object-fit:cover;border-radius:16px;border:1px solid var(--border)">
-          <img src="assets/img/2.png" alt="Пример генерации 2" style="width:100%;height:100%;object-fit:cover;border-radius:16px;border:1px solid var(--border)">
+        <div style="position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--border)" id="gallery-s2">
+          <img id="gal-img" src="assets/img/1.png" alt="Пример генерации" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.4s ease">
+          <button onclick="galPrev()" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(16,20,24,0.75);border:1px solid var(--border2);color:var(--muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)">←</button>
+          <button onclick="galNext()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(16,20,24,0.75);border:1px solid var(--border2);color:var(--muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)">→</button>
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px" id="gal-dots"></div>
         </div>
       </div>
     </div>
@@ -260,17 +262,17 @@
       <div style="flex:1;display:flex;flex-direction:column;gap:16px">
         <div class="grid g3" style="flex:1">
           <div class="box b-gold">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
             <div class="box-title">Сценарии для видео</div>
             <div class="box-body">Структура, сценарный план, раскадровка — ИИ предлагает варианты под формат и целевую аудиторию канала</div>
           </div>
           <div class="box b-blue">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
             <div class="box-title">Контент-планы</div>
             <div class="box-body">Ежемесячные планы по каналам: темы, форматы, даты публикаций — в несколько раз быстрее ручной разработки</div>
           </div>
           <div class="box b-green">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+            <span class="box-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
             <div class="box-title">Посты и тексты</div>
             <div class="box-body">Готовые тексты для соцсетей, рассылок, презентаций — с адаптацией под каждую платформу и тон бренда</div>
           </div>
@@ -357,75 +359,37 @@
         <span class="slide-cat">· Как опубликовать сайт бесплатно</span>
       </div>
       <div class="slide-h">GitHub Pages: сайт за 10 минут</div>
-      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;overflow:hidden">
-        <div style="display:flex;flex-direction:column;gap:10px;overflow:auto">
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot">1</div>
-              <div class="tl-content">
-                <div class="tl-title">Зарегистрироваться на GitHub</div>
-                <div class="tl-body">Зайди на <strong style="color:var(--text)">github.com</strong> → нажми «Sign up» → введи email, придумай логин и пароль → подтверди email. Это бесплатно.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">2</div>
-              <div class="tl-content">
-                <div class="tl-title">Создать репозиторий</div>
-                <div class="tl-body">На главной нажми зелёную кнопку «New» → придумай название (например <strong style="color:var(--text)">my-site</strong>) → выбери «Public» → нажми «Create repository».</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">3</div>
-              <div class="tl-content">
-                <div class="tl-title">Сгенерировать сайт в нейросети</div>
-                <div class="tl-body">Открой <strong style="color:var(--text)">claude.ai</strong> или <strong style="color:var(--text)">chatgpt.com</strong> → напиши: «Сделай одностраничный HTML-сайт о ...» → скопируй весь код → сохрани как файл <strong style="color:var(--text)">index.html</strong>.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">4</div>
-              <div class="tl-content">
-                <div class="tl-title">Загрузить файл в репозиторий</div>
-                <div class="tl-body">Открой свой репозиторий → нажми «Add file» → «Upload files» → перетащи <strong style="color:var(--text)">index.html</strong> → нажми «Commit changes». Файл должен называться именно <strong style="color:var(--text)">index.html</strong> — это важно.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">5</div>
-              <div class="tl-content">
-                <div class="tl-title">Включить GitHub Pages</div>
-                <div class="tl-body">В репозитории → вкладка <strong style="color:var(--text)">Settings</strong> → раздел <strong style="color:var(--text)">Pages</strong> слева → в поле «Branch» выбери <strong style="color:var(--text)">main</strong> → нажми <strong style="color:var(--text)">Save</strong>. Подождать 1–2 минуты.</div>
-              </div>
-            </div>
-            <div class="tl-item" style="padding-bottom:0">
-              <div class="tl-dot">6</div>
-              <div class="tl-content">
-                <div class="tl-title">Открыть сайт</div>
-                <div class="tl-body">Ссылка появится в том же разделе Pages: <strong style="color:var(--accent)">твой-логин.github.io/my-site</strong>. Поделись ею — она работает у всех без регистрации.</div>
-              </div>
-            </div>
-          </div>
+      <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;overflow:hidden">
+        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 01</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Регистрация на GitHub</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Зайди на <strong style="color:var(--text)">github.com</strong> → «Sign up» → введи email, придумай логин и пароль → подтверди email.<br><br>Это бесплатно.</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="box b-gold" style="flex:1">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-            <div class="box-title">Что можно сделать</div>
-            <div class="box-body" style="font-size:13px;line-height:1.7">
-              Лендинг · Презентация · Портфолио · Мини-сайт компании · Инструкция · Страница мероприятия
-            </div>
-          </div>
-          <div class="box b-red">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
-            <div class="box-title">Ограничения</div>
-            <div class="box-body" style="font-size:13px;line-height:1.7">
-              Только <strong style="color:var(--text)">фронтенд</strong> — HTML, CSS, JavaScript.<br>
-              Нет базы данных, нет серверной логики, нельзя принимать оплату, нельзя хранить данные пользователей.<br>
-              Подходит для статичных страниц — информация, презентации, портфолио.
-            </div>
-          </div>
-          <div class="box b-green">
-            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
-            <div class="box-title">Цена</div>
-            <div class="box-body" style="font-size:13px">Полностью бесплатно для публичных репозиториев.</div>
-          </div>
+        <div class="box b-blue" style="display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:0.15em;margin-bottom:16px">ШАГ 02</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Создать репозиторий</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">На главной нажми зелёную кнопку <strong style="color:var(--text)">«New»</strong> → придумай название (<strong style="color:var(--text)">my-site</strong>) → выбери «Public» → «Create repository».</div>
+        </div>
+        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 03</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Сгенерировать сайт</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Открой <strong style="color:var(--text)">claude.ai</strong> или <strong style="color:var(--text)">chatgpt.com</strong> → напиши: «Сделай HTML-сайт о ...» → скопируй код → сохрани как <strong style="color:var(--text)">index.html</strong>.</div>
+        </div>
+        <div class="box b-blue" style="display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:0.15em;margin-bottom:16px">ШАГ 04</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Загрузить файл</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">В репозитории → «Add file» → «Upload files» → перетащи <strong style="color:var(--text)">index.html</strong> → «Commit changes».<br><br>Имя файла должно быть именно <strong style="color:var(--text)">index.html</strong>.</div>
+        </div>
+        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 05</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Включить Pages</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1"><strong style="color:var(--text)">Settings</strong> → <strong style="color:var(--text)">Pages</strong> → в поле Branch выбери <strong style="color:var(--text)">main</strong> → <strong style="color:var(--text)">Save</strong>.<br><br>Подождать 1–2 минуты.</div>
+        </div>
+        <div class="box" style="border-color:var(--accent);background:rgba(255,37,116,0.06);display:flex;flex-direction:column;justify-content:flex-start">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 06</div>
+          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Открыть сайт</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Ссылка появится в разделе Pages:<br><strong style="color:var(--accent);word-break:break-all">логин.github.io/my-site</strong><br><br>Она работает у всех без регистрации.</div>
+          <div style="margin-top:16px;padding:10px 14px;background:var(--surface);border-radius:8px;font-size:12px;color:var(--muted2);line-height:1.5"><strong style="color:var(--red)">Только фронтенд:</strong> HTML, CSS, JS. Нет БД, нет серверной логики.</div>
         </div>
       </div>
     </div>
@@ -441,5 +405,27 @@
 </div><!-- /pres -->
 
 <script src="assets/js/main.js"></script>
+<script>
+  const galImgs = ['assets/img/1.png','assets/img/2.png'];
+  let galCur = 0;
+  const galImg = document.getElementById('gal-img');
+  const galDotsEl = document.getElementById('gal-dots');
+
+  galImgs.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.style.cssText = `width:8px;height:8px;border-radius:50%;background:${i===0?'#fff':'rgba(255,255,255,0.35)'};transition:background .3s;cursor:pointer`;
+    d.addEventListener('click', () => galGo(i));
+    galDotsEl.appendChild(d);
+  });
+
+  function galGo(n) {
+    galCur = (n + galImgs.length) % galImgs.length;
+    galImg.style.opacity = 0;
+    setTimeout(() => { galImg.src = galImgs[galCur]; galImg.style.opacity = 1; }, 200);
+    Array.from(galDotsEl.children).forEach((d,i) => d.style.background = i===galCur ? '#fff' : 'rgba(255,255,255,0.35)');
+  }
+  function galNext() { galGo(galCur + 1); }
+  function galPrev() { galGo(galCur - 1); }
+</script>
 </body>
 </html>
