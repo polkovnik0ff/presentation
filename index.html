@@ -359,37 +359,69 @@
         <span class="slide-cat">· Как опубликовать сайт бесплатно</span>
       </div>
       <div class="slide-h">GitHub Pages: сайт за 10 минут</div>
-      <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;overflow:hidden">
-        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 01</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Регистрация на GitHub</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Зайди на <strong style="color:var(--text)">github.com</strong> → «Sign up» → введи email, придумай логин и пароль → подтверди email.<br><br>Это бесплатно.</div>
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:10px;overflow:auto">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1</div>
+              <div class="tl-content">
+                <div class="tl-title">Зарегистрироваться на GitHub</div>
+                <div class="tl-body">Зайди на <strong style="color:var(--text)">github.com</strong> → нажми «Sign up» → введи email, придумай логин и пароль → подтверди email. Это бесплатно.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2</div>
+              <div class="tl-content">
+                <div class="tl-title">Создать репозиторий</div>
+                <div class="tl-body">На главной нажми зелёную кнопку «New» → придумай название (например <strong style="color:var(--text)">my-site</strong>) → выбери «Public» → нажми «Create repository».</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">3</div>
+              <div class="tl-content">
+                <div class="tl-title">Сгенерировать сайт в нейросети</div>
+                <div class="tl-body">Открой <strong style="color:var(--text)">claude.ai</strong> или <strong style="color:var(--text)">chatgpt.com</strong> → напиши: «Сделай одностраничный HTML-сайт о ...» → скопируй весь код → сохрани как файл <strong style="color:var(--text)">index.html</strong>.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">4</div>
+              <div class="tl-content">
+                <div class="tl-title">Загрузить файл в репозиторий</div>
+                <div class="tl-body">Открой свой репозиторий → нажми «Add file» → «Upload files» → перетащи <strong style="color:var(--text)">index.html</strong> → нажми «Commit changes». Файл должен называться именно <strong style="color:var(--text)">index.html</strong> — это важно.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">5</div>
+              <div class="tl-content">
+                <div class="tl-title">Включить GitHub Pages</div>
+                <div class="tl-body">В репозитории → вкладка <strong style="color:var(--text)">Settings</strong> → раздел <strong style="color:var(--text)">Pages</strong> слева → в поле «Branch» выбери <strong style="color:var(--text)">main</strong> → нажми <strong style="color:var(--text)">Save</strong>. Подождать 1–2 минуты.</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">6</div>
+              <div class="tl-content">
+                <div class="tl-title">Открыть сайт</div>
+                <div class="tl-body">Ссылка появится в том же разделе Pages: <strong style="color:var(--accent)">твой-логин.github.io/my-site</strong>. Поделись ею — она работает у всех без регистрации.</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="box b-blue" style="display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:0.15em;margin-bottom:16px">ШАГ 02</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Создать репозиторий</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">На главной нажми зелёную кнопку <strong style="color:var(--text)">«New»</strong> → придумай название (<strong style="color:var(--text)">my-site</strong>) → выбери «Public» → «Create repository».</div>
-        </div>
-        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 03</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Сгенерировать сайт</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Открой <strong style="color:var(--text)">claude.ai</strong> или <strong style="color:var(--text)">chatgpt.com</strong> → напиши: «Сделай HTML-сайт о ...» → скопируй код → сохрани как <strong style="color:var(--text)">index.html</strong>.</div>
-        </div>
-        <div class="box b-blue" style="display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);letter-spacing:0.15em;margin-bottom:16px">ШАГ 04</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Загрузить файл</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">В репозитории → «Add file» → «Upload files» → перетащи <strong style="color:var(--text)">index.html</strong> → «Commit changes».<br><br>Имя файла должно быть именно <strong style="color:var(--text)">index.html</strong>.</div>
-        </div>
-        <div class="box b-gold" style="display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 05</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Включить Pages</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1"><strong style="color:var(--text)">Settings</strong> → <strong style="color:var(--text)">Pages</strong> → в поле Branch выбери <strong style="color:var(--text)">main</strong> → <strong style="color:var(--text)">Save</strong>.<br><br>Подождать 1–2 минуты.</div>
-        </div>
-        <div class="box" style="border-color:var(--accent);background:rgba(255,37,116,0.06);display:flex;flex-direction:column;justify-content:flex-start">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:16px">ШАГ 06</div>
-          <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2">Открыть сайт</div>
-          <div style="font-size:14px;color:var(--muted);line-height:1.7;flex:1">Ссылка появится в разделе Pages:<br><strong style="color:var(--accent);word-break:break-all">логин.github.io/my-site</strong><br><br>Она работает у всех без регистрации.</div>
-          <div style="margin-top:16px;padding:10px 14px;background:var(--surface);border-radius:8px;font-size:12px;color:var(--muted2);line-height:1.5"><strong style="color:var(--red)">Только фронтенд:</strong> HTML, CSS, JS. Нет БД, нет серверной логики.</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="box b-gold" style="flex:1">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+            <div class="box-title">Что можно сделать</div>
+            <div class="box-body">Лендинг · Презентация · Портфолио · Мини-сайт компании · Инструкция · Страница мероприятия</div>
+          </div>
+          <div class="box b-red">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div class="box-title">Ограничения</div>
+            <div class="box-body">Только <strong style="color:var(--text)">фронтенд</strong> — HTML, CSS, JavaScript. Нет базы данных, нет серверной логики, нельзя принимать оплату, нельзя хранить данные пользователей. Подходит для статичных страниц.</div>
+          </div>
+          <div class="box b-green">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+            <div class="box-title">Цена</div>
+            <div class="box-body">Полностью бесплатно для публичных репозиториев.</div>
+          </div>
         </div>
       </div>
     </div>
