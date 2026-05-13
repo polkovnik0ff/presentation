@@ -237,9 +237,10 @@ html, body {
 .box.b-green  { border-left: 2px solid var(--green); }
 .box.b-red    { border-left: 2px solid var(--red); }
 
-.box-icon { font-size: 22px; margin-bottom: 12px; display: block; }
-.box-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-.box-body  { font-size: 12px; color: var(--muted); line-height: 1.65; }
+.box-icon { margin-bottom: 14px; display: block; }
+.box-icon svg { display: block; }
+.box-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.box-body  { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ═══════════════════════════════════
    METRICS

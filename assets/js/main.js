@@ -1,4 +1,4 @@
-const TOTAL = 7;
+const TOTAL = 8;
 let cur = 0;
 const slides = document.querySelectorAll('.slide');
 const dotsEl = document.getElementById('dots');
@@ -6,7 +6,7 @@ const counter = document.getElementById('counter');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const bar = document.getElementById('progressBar');
-const labels = ['Титул','Тендеры','Блог ЦУМ','Чат-бот','Аудиты','Контент','Отчётность'];
+const labels = ['Титул','Тендеры','Блог ЦУМ','Чат-бот','Аудиты','Контент','Отчётность','GitHub Pages'];
 const visited = new Set([0]);
 
 // Build dots

@@ -21,7 +21,7 @@
     </div>
     <div class="nav-center" id="dots"></div>
     <div class="nav-right">
-      <span class="slide-counter" id="counter">1 / 7</span>
+      <span class="slide-counter" id="counter">1 / 8</span>
       <div class="nav-btns">
         <button class="nav-btn" id="prevBtn" onclick="go(-1)" title="Назад (←)">←</button>
         <button class="nav-btn" id="nextBtn" onclick="go(1)" title="Далее (→)">→</button>
@@ -36,8 +36,7 @@
     <div class="slide active" id="s0">
       <div class="glow"></div>
       <div class="title-eyebrow">Внутренняя презентация · 2025</div>
-      <div class="title-main">ИИ в работе<br>отдела</div>
-      <div class="title-sub">Как мы используем искусственный интеллект:<br>от тендерного анализа до собственного сервиса отчётности</div>
+      <div class="title-main">ИИ в работе<br>отдела продвижения</div>
       <div class="title-divider"></div>
       <div class="title-tags">
         <span class="title-tag">◆ Claude</span>
@@ -59,45 +58,27 @@
       <div class="tools-row">
         <span class="tool-badge tb-claude">◆ Claude</span>
       </div>
-      <div class="two-col">
-        <div class="col-main">
-          <div class="grid g3" style="flex:1">
-            <div class="box b-gold">
-              <span class="box-icon">🔍</span>
-              <div class="box-title">Анализ документации</div>
-              <div class="box-body">Загрузка тендерного пакета → автоматическое чтение условий, требований, сроков и обязательств</div>
-            </div>
-            <div class="box b-red">
-              <span class="box-icon">⚠️</span>
-              <div class="box-title">Опасные точки</div>
-              <div class="box-body">Подсветка слабых мест: скрытые условия, противоречия, нестандартные требования к участнику</div>
-            </div>
-            <div class="box b-green">
-              <span class="box-icon">✅</span>
-              <div class="box-title">Список задач</div>
-              <div class="box-body">Конкретный чеклист: что посчитать, какую информацию подготовить, какие документы запросить</div>
-            </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+        <div class="grid g3" style="flex:1">
+          <div class="box b-gold">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+            <div class="box-title">Анализ документации</div>
+            <div class="box-body">Загрузка тендерного пакета → автоматическое чтение условий, требований, сроков и обязательств</div>
           </div>
-          <div class="result-box">
-            <div class="result-icon">💡</div>
-            <div class="result-text"><strong>Результат:</strong> руководитель получает готовый анализ без многочасового ручного изучения документов. Снижается риск пропустить критичное условие.</div>
+          <div class="box b-red">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div class="box-title">Опасные точки</div>
+            <div class="box-body">Подсветка слабых мест: скрытые условия, противоречия, нестандартные требования к участнику</div>
+          </div>
+          <div class="box b-green">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+            <div class="box-title">Список задач</div>
+            <div class="box-body">Конкретный чеклист: что посчитать, какую информацию подготовить, какие документы запросить</div>
           </div>
         </div>
-        <div class="col-side">
-          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
-            <div class="metric">
-              <div class="metric-val">[ ]x</div>
-              <div class="metric-label">быстрее первичный анализ<span class="metric-hint">← вставь значение</span></div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">[ ]%</div>
-              <div class="metric-label">снижение риска пропустить условие<span class="metric-hint">← вставь значение</span></div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">[ ] ч</div>
-              <div class="metric-label">экономия на каждый тендер<span class="metric-hint">← вставь значение</span></div>
-            </div>
-          </div>
+        <div class="result-box">
+          <div class="result-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="result-text"><strong>Результат:</strong> руководитель получает готовый анализ без многочасового ручного изучения документов. Снижается риск пропустить критичное условие.</div>
         </div>
       </div>
     </div>
@@ -114,41 +95,34 @@
       <div class="tools-row">
         <span class="tool-badge tb-gpt">◆ ChatGPT / DALL·E</span>
       </div>
-      <div class="two-col">
-        <div class="col-main">
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:14px">
           <div class="grid g2" style="flex:1">
             <div class="box b-red">
-              <span class="box-icon">🔴</span>
+              <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
               <div class="box-title">Проблема</div>
               <div class="box-body">Высокий темп публикаций требует постоянного потока уникального визуала. Вручную это занимало часы дизайнерского времени на каждую статью</div>
             </div>
             <div class="box b-green">
-              <span class="box-icon">✅</span>
+              <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
               <div class="box-title">Решение</div>
-              <div class="box-body">Генерация через ChatGPT/DALL·E: стиль, атмосфера и тема подбираются по тексту статьи автоматически без участия дизайнера</div>
+              <div class="box-body">Генерация через ChatGPT/DALL·E: стиль и тема подбираются по тексту статьи автоматически, без участия дизайнера</div>
             </div>
             <div class="box b-gold" style="grid-column:1/-1">
-              <span class="box-icon">🖼</span>
+              <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
               <div class="box-title">Процесс</div>
-              <div class="box-body">Копируем ключевые тезисы статьи → формируем промпт → получаем 3–4 варианта → выбираем и публикуем. Весь цикл — до 5 минут на изображение</div>
+              <div class="box-body">Тезисы статьи → промпт → 3–4 варианта → публикация. Весь цикл — 2 минуты на изображение</div>
             </div>
+          </div>
+          <div class="metrics m3">
+            <div class="metric"><div class="metric-val">30+</div><div class="metric-label">статей в месяц</div></div>
+            <div class="metric"><div class="metric-val">100%</div><div class="metric-label">экономия на дизайнере</div></div>
+            <div class="metric"><div class="metric-val">2 мин</div><div class="metric-label">на одно изображение</div></div>
           </div>
         </div>
-        <div class="col-side">
-          <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
-            <div class="metric">
-              <div class="metric-val">[ ]</div>
-              <div class="metric-label">статей/мес с AI-визуалом<span class="metric-hint">← вставь значение</span></div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">[ ]x</div>
-              <div class="metric-label">экономия vs дизайнер<span class="metric-hint">← вставь значение</span></div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">~5</div>
-              <div class="metric-label">минут на одно изображение</div>
-            </div>
-          </div>
+        <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px;overflow:hidden">
+          <img src="assets/img/1.png" alt="Пример генерации 1" style="width:100%;height:100%;object-fit:cover;border-radius:16px;border:1px solid var(--border)">
+          <img src="assets/img/2.png" alt="Пример генерации 2" style="width:100%;height:100%;object-fit:cover;border-radius:16px;border:1px solid var(--border)">
         </div>
       </div>
     </div>
@@ -182,21 +156,23 @@
         </div>
         <div class="grid g3">
           <div class="box b-red">
-            <div class="box-title">❌ Было (план)</div>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+            <div class="box-title">Было</div>
             <div class="box-body">Google / Яндекс диск — материалы доступны, но нет понимания кто именно скачал. Потеря потенциальных лидов</div>
           </div>
           <div class="box b-green">
-            <div class="box-title">✅ Стало</div>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+            <div class="box-title">Стало</div>
             <div class="box-body">Бот выдаёт материал и собирает контакты одновременно. База заинтересованных людей формируется автоматически</div>
           </div>
           <div class="box b-blue">
-            <div class="box-title">🔮 Следующий шаг</div>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+            <div class="box-title">Следующий шаг</div>
             <div class="box-body">Объединение с каналом событий — все ивенты, материалы и участники в одном месте</div>
           </div>
         </div>
         <div class="metrics m3" style="margin-top:auto">
           <div class="metric"><div class="metric-val">1 ч</div><div class="metric-label">время разработки бота</div></div>
-          <div class="metric"><div class="metric-val">[ ]</div><div class="metric-label">контактов собрано<span class="metric-hint">← вставь значение</span></div></div>
           <div class="metric"><div class="metric-val">0 ₽</div><div class="metric-label">стоимость разработки</div></div>
         </div>
       </div>
@@ -218,8 +194,9 @@
       <div class="two-col">
         <div class="col-main">
           <div class="box b-red" style="margin-bottom:4px">
-            <div class="box-title">🔴 Проблема: ручной процесс на несколько часов</div>
-            <div class="box-body">Парсинг через Screaming Frog → ручной анализ отчётов → изучение конкурентов → написание аудита в документ. Каждый аудит — часы работы специалиста</div>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div class="box-title">Проблема: ручной процесс</div>
+            <div class="box-body">Парсинг через Screaming Frog → ручной анализ отчётов → изучение конкурентов → написание аудита в документ. Каждый аудит — 2-3 часа работы специалиста</div>
           </div>
           <div class="timeline" style="flex:1">
             <div class="tl-item">
@@ -255,16 +232,12 @@
         <div class="col-side">
           <div class="metrics m3" style="grid-template-columns:1fr;gap:12px;flex:1">
             <div class="metric">
-              <div class="metric-val">[ ] ч</div>
-              <div class="metric-label">экономия на один аудит<span class="metric-hint">← вставь значение</span></div>
+              <div class="metric-val">1-2 ч</div>
+              <div class="metric-label">экономия на один аудит</div>
             </div>
             <div class="metric">
               <div class="metric-val">~5</div>
               <div class="metric-label">API-сервисов подключено</div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">[ ]x</div>
-              <div class="metric-label">рост скорости подготовки<span class="metric-hint">← вставь значение</span></div>
             </div>
           </div>
         </div>
@@ -285,47 +258,21 @@
         <span class="tool-badge tb-gpt">◆ ChatGPT</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:16px">
-        <div class="grid g3">
+        <div class="grid g3" style="flex:1">
           <div class="box b-gold">
-            <span class="box-icon">🎬</span>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
             <div class="box-title">Сценарии для видео</div>
             <div class="box-body">Структура, сценарный план, раскадровка — ИИ предлагает варианты под формат и целевую аудиторию канала</div>
           </div>
           <div class="box b-blue">
-            <span class="box-icon">📅</span>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
             <div class="box-title">Контент-планы</div>
             <div class="box-body">Ежемесячные планы по каналам: темы, форматы, даты публикаций — в несколько раз быстрее ручной разработки</div>
           </div>
           <div class="box b-green">
-            <span class="box-icon">✍️</span>
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
             <div class="box-title">Посты и тексты</div>
             <div class="box-body">Готовые тексты для соцсетей, рассылок, презентаций — с адаптацией под каждую платформу и тон бренда</div>
-          </div>
-        </div>
-        <div style="flex:1;display:flex;gap:14px;align-items:flex-start">
-          <div style="flex:1">
-            <div class="prog-list" style="margin-bottom:20px">
-              <div class="prog-item">
-                <span class="prog-label">Экономия времени на контент-план</span>
-                <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
-                <span class="prog-val">[ ]%</span>
-              </div>
-              <div class="prog-item">
-                <span class="prog-label">Скорость подготовки сценария</span>
-                <div class="prog-track"><div class="prog-fill" style="width:60%"></div></div>
-                <span class="prog-val">[ ]x</span>
-              </div>
-              <div class="prog-item">
-                <span class="prog-label">Постов в месяц с AI-помощью</span>
-                <div class="prog-track"><div class="prog-fill" style="width:80%"></div></div>
-                <span class="prog-val">[ ]</span>
-              </div>
-            </div>
-            <div style="font-size:10px;color:var(--muted2)">← замени [ ] на реальные значения</div>
-          </div>
-          <div class="result-box" style="max-width:320px;align-self:stretch">
-            <div class="result-icon">💡</div>
-            <div class="result-text"><strong>Ключевое:</strong> команда фокусируется на стратегии и редактуре, а не на написании черновиков. Скорость и объём контента кратно выросли.</div>
           </div>
         </div>
       </div>
@@ -349,12 +296,12 @@
         <div class="col-main">
           <div class="grid g2">
             <div class="box b-gold">
-              <span class="box-icon">📊</span>
+              <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
               <div class="box-title">Что делает сервис</div>
               <div class="box-body">Автоматически собирает данные из 5 источников через API, объединяет в единый брендированный отчёт, генерирует текстовые выводы через GPT на основе реальных цифр клиента</div>
             </div>
             <div class="box b-blue">
-              <span class="box-icon">🛠</span>
+              <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg></span>
               <div class="box-title">Стек</div>
               <div class="box-body">Yandex Metrica API · Яндекс Вебмастер · Google Search Console · PageSpeed Insights · Topvisor API · GPT для аналитики · Фирменный UI-кит</div>
             </div>
@@ -398,9 +345,86 @@
               <div class="metric-label">API-источников в одном отчёте</div>
             </div>
           </div>
-          <div class="result-box" style="border-color:rgba(74,222,128,0.25);flex:1;align-items:flex-start">
-            <div class="result-icon" style="background:var(--green-dim);border-color:rgba(74,222,128,0.25)">🚀</div>
-            <div class="result-text"><strong>Следующий шаг:</strong> перевод на хостинг и подключение всей клиентской базы. Полный контроль над данными и дизайном отчётов.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SLIDE 7: GITHUB PAGES BONUS ══════════════════════════ -->
+    <div class="slide" id="s7">
+      <div class="corner-num">07</div>
+      <div class="slide-eyebrow">
+        <span class="slide-num">БОНУС</span>
+        <span class="slide-cat">· Как опубликовать сайт бесплатно</span>
+      </div>
+      <div class="slide-h">GitHub Pages: сайт за 10 минут</div>
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:10px;overflow:auto">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1</div>
+              <div class="tl-content">
+                <div class="tl-title">Зарегистрироваться на GitHub</div>
+                <div class="tl-body">Зайди на <strong style="color:var(--text)">github.com</strong> → нажми «Sign up» → введи email, придумай логин и пароль → подтверди email. Это бесплатно.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2</div>
+              <div class="tl-content">
+                <div class="tl-title">Создать репозиторий</div>
+                <div class="tl-body">На главной нажми зелёную кнопку «New» → придумай название (например <strong style="color:var(--text)">my-site</strong>) → выбери «Public» → нажми «Create repository».</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">3</div>
+              <div class="tl-content">
+                <div class="tl-title">Сгенерировать сайт в нейросети</div>
+                <div class="tl-body">Открой <strong style="color:var(--text)">claude.ai</strong> или <strong style="color:var(--text)">chatgpt.com</strong> → напиши: «Сделай одностраничный HTML-сайт о ...» → скопируй весь код → сохрани как файл <strong style="color:var(--text)">index.html</strong>.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">4</div>
+              <div class="tl-content">
+                <div class="tl-title">Загрузить файл в репозиторий</div>
+                <div class="tl-body">Открой свой репозиторий → нажми «Add file» → «Upload files» → перетащи <strong style="color:var(--text)">index.html</strong> → нажми «Commit changes». Файл должен называться именно <strong style="color:var(--text)">index.html</strong> — это важно.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">5</div>
+              <div class="tl-content">
+                <div class="tl-title">Включить GitHub Pages</div>
+                <div class="tl-body">В репозитории → вкладка <strong style="color:var(--text)">Settings</strong> → раздел <strong style="color:var(--text)">Pages</strong> слева → в поле «Branch» выбери <strong style="color:var(--text)">main</strong> → нажми <strong style="color:var(--text)">Save</strong>. Подождать 1–2 минуты.</div>
+              </div>
+            </div>
+            <div class="tl-item" style="padding-bottom:0">
+              <div class="tl-dot">6</div>
+              <div class="tl-content">
+                <div class="tl-title">Открыть сайт</div>
+                <div class="tl-body">Ссылка появится в том же разделе Pages: <strong style="color:var(--accent)">твой-логин.github.io/my-site</strong>. Поделись ею — она работает у всех без регистрации.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="box b-gold" style="flex:1">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+            <div class="box-title">Что можно сделать</div>
+            <div class="box-body" style="font-size:13px;line-height:1.7">
+              Лендинг · Презентация · Портфолио · Мини-сайт компании · Инструкция · Страница мероприятия
+            </div>
+          </div>
+          <div class="box b-red">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <div class="box-title">Ограничения</div>
+            <div class="box-body" style="font-size:13px;line-height:1.7">
+              Только <strong style="color:var(--text)">фронтенд</strong> — HTML, CSS, JavaScript.<br>
+              Нет базы данных, нет серверной логики, нельзя принимать оплату, нельзя хранить данные пользователей.<br>
+              Подходит для статичных страниц — информация, презентации, портфолио.
+            </div>
+          </div>
+          <div class="box b-green">
+            <span class="box-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+            <div class="box-title">Цена</div>
+            <div class="box-body" style="font-size:13px">Полностью бесплатно для публичных репозиториев.</div>
           </div>
         </div>
       </div>
