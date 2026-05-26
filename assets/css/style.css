@@ -65,7 +65,7 @@ html, body {
 
 .logo {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0.15em;
   color: var(--muted);
   text-transform: uppercase;
@@ -98,7 +98,7 @@ html, body {
 }
 .slide-counter {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; color: var(--muted);
+  font-size: 16px; color: var(--muted);
   letter-spacing: 0.05em; font-variant-numeric: tabular-nums;
   min-width: 40px; text-align: right;
 }
@@ -110,7 +110,7 @@ html, body {
   width: 32px; height: 32px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   transition: all 0.2s;
   display: flex; align-items: center; justify-content: center;
 }
@@ -127,7 +127,7 @@ html, body {
 .slide {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
-  padding: 56px 72px 48px;
+  padding: 15px 72px 48px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -173,11 +173,11 @@ html, body {
 }
 .slide-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; color: var(--accent);
+  font-size: 15px; color: var(--accent);
   letter-spacing: 0.1em; font-weight: 500;
 }
 .slide-cat {
-  font-size: 11px; color: var(--muted);
+  font-size: 15px; color: var(--muted);
   letter-spacing: 0.1em;
 }
 
@@ -205,7 +205,7 @@ html, body {
 .tool-badge {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 5px 14px; border-radius: 20px;
-  font-size: 11px; font-weight: 500;
+  font-size: 15px; font-weight: 500;
   letter-spacing: 0.04em;
   border: 1px solid;
 }
@@ -242,7 +242,7 @@ html, body {
 .box-icon { margin-bottom: 16px; display: block; }
 .box-icon svg { display: block; }
 .box-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 10px; }
-.box-body  { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; }
+.box-body  { font-size: 18px; color: var(--muted); line-height: 1.7; flex: 1; }
 
 /* ═══════════════════════════════════
    METRICS
@@ -266,7 +266,7 @@ html, body {
   letter-spacing: -0.02em;
 }
 .metric-label {
-  font-size: 11px; color: var(--muted);
+  font-size: 15px; color: var(--muted);
   margin-top: 5px; line-height: 1.4;
 }
 .metric-hint {
@@ -306,7 +306,7 @@ html, body {
   font-size: 10px; color: var(--accent);
   letter-spacing: 0.1em; font-weight: 500;
 }
-.flow-txt { font-size: 12px; color: var(--text); line-height: 1.45; }
+.flow-txt { font-size: 16px; color: var(--text); line-height: 1.45; }
 
 /* ═══════════════════════════════════
    TIMELINE
@@ -334,11 +334,11 @@ html, body {
   margin-top: 2px;
 }
 .tl-content { flex: 1; }
-.tl-title { font-size: 14px; color: #fff; font-weight: 600; margin-bottom: 4px; }
-.tl-body  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.tl-title { font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 4px; }
+.tl-body  { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
 #s8 .tl-title { font-size: 17px; margin-bottom: 6px; }
-#s8 .tl-body  { font-size: 15px; line-height: 1.65; }
+#s8 .tl-body  { font-size: 17px; line-height: 1.65; }
 
 /* ═══════════════════════════════════
    RESULT BOX
@@ -358,7 +358,7 @@ html, body {
   font-size: 18px; flex-shrink: 0;
 }
 .result-text {
-  font-size: 13px; color: var(--muted); line-height: 1.7;
+  font-size: 16px; color: var(--muted); line-height: 1.7;
 }
 .result-text strong { color: var(--text); font-weight: 600; }
 
@@ -367,10 +367,10 @@ html, body {
 ═══════════════════════════════════ */
 .prog-list { display: flex; flex-direction: column; gap: 12px; }
 .prog-item { display: flex; align-items: center; gap: 14px; }
-.prog-label { font-size: 12px; color: var(--muted); width: 220px; flex-shrink: 0; }
+.prog-label { font-size: 16px; color: var(--muted); width: 220px; flex-shrink: 0; }
 .prog-track { flex: 1; height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
 .prog-fill  { height: 100%; border-radius: 2px; background: var(--accent); }
-.prog-val   { font-size: 12px; color: var(--text); font-weight: 500; width: 56px; text-align: right; }
+.prog-val   { font-size: 16px; color: var(--text); font-weight: 500; width: 56px; text-align: right; }
 
 /* ═══════════════════════════════════
    SLIDE 0 — TITLE
@@ -390,7 +390,7 @@ html, body {
 }
 .title-eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; letter-spacing: 0.22em;
+  font-size: 15px; letter-spacing: 0.22em;
   color: var(--accent); text-transform: uppercase;
   margin-bottom: 24px; font-weight: 400;
 }
@@ -421,7 +421,7 @@ html, body {
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid var(--border2);
   padding: 8px 18px; border-radius: 24px;
-  font-size: 12px; color: var(--muted);
+  font-size: 16px; color: var(--muted);
   letter-spacing: 0.04em;
 }
 
@@ -437,6 +437,16 @@ html, body {
 }
 .col-main { display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
 .col-side  { display: flex; flex-direction: column; gap: 14px; }
+
+/* ═══════════════════════════════════
+   SLIDE S2 — OVERFLOW FIX
+═══════════════════════════════════ */
+#s2 .slide-desc  { margin-bottom: 10px; }
+#s2 .tools-row   { margin-bottom: 10px; }
+#s2 .box         { padding: 16px 18px; }
+#s2 .box-icon    { margin-bottom: 8px; }
+#s2 .box-title   { margin-bottom: 6px; }
+#s2 .metric      { padding: 10px 14px; }
 
 /* ═══════════════════════════════════
    DECORATIVE CORNER NUMBERS
